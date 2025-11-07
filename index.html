@@ -28,27 +28,30 @@
             </div>
         </section>
         
-        <section id="search-bar" class="search-bar-section">
-            <div class="search container">
-                <input type="text" id="search-input" placeholder="Search by location, agent name, or campus...">
+        <nav>
+            <a href="#Features">Features</a>
+            <a href="#Download">Download</a>
+
+            <button id="search-icon" class="search-toggle-button">🔍 Search</button>
+            <div id="searchDropdown" class="search-dropdownhidden">
+                <input type="text" id="search-input" placeholder="Location, agent, distance....">
                 <div class="filters">
-                        <select id="price-filter">
-                          <option value="">Price Range</option>
-                          <option value="600000">Over ₦600000</option>
-                          <option value="600000">Under ₦600000</option>
-                          <option value="300000">Under ₦300000</otpion>
-                          <option value="100000">Under ₦100000</otpion>
-                        </select>
-                        <select id="distance-filter">
-                            <option value="">Distance To School</option>
-                            <option value="5">Within 5 Minutes</option>
-                            <option value="10">Within 10 Minutes</option>
-                            <option value="15">Within 15 Minutes</option>
-                        </select>
-                        <button calss="cta-button search-button">Search</button>
-                </div>
+                    <select id="price-filter">
+                        <option value="">Price Range(₦)</option>
+                        <option value="50000">₦50,000</option>
+                        <option value="150000">₦50,000-₦150,000</option>
+                        <option value="300000">Over ₦150,000</option>
+                    </select>
+                    <select id="distance-filter">
+                        <option value="">Minutes walk</option>
+                        <option value="10">Under 10 Minutes</option>
+                        <option value="20">10 - 20 Minutes</option>
+                        <option value="30">Over 20 Minutes</option>
+                    </select>
+                    <button class="cta-button search-button">FInd Listings</button>
+                </div>            
             </div>
-        </section>
+        </nav>
         <section id="Features" class="features-section">
             <h2>Why Choose BNB Accomodations?</h2>
             <div class="features-cards">
