@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>BNB Accomodations - Find Your Perfect Stay</title>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="styles.css"> 
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     </head>
     <body>
@@ -13,27 +13,16 @@
                 <div class="logo">
                     <img src="logo.png" alt="BNB Accomodations Logo" class="header-logo">
                 </div>
+                
                 <nav>
                    <a href="#Features">Features</a>
                    <a href="#Download">Download</a>
+
+                   <button id="searchIcon" class="search-toggle-button">🔍 Search</button>
                 </nav>
             </div>
-        </header>
-
-        <section id="hero" class="hero-section">
-            <div class="hero-content">
-                <h1>Your Perfect Off-Campus Accomodation Awaits</h1>
-                <p>Find vetted, secure, and affordable rental properties near or within your campus on iOS and Android.</p>
-                <button id="download-Btn" class="cta-button">Download the App Now!</button>
-            </div>
-        </section>
-        
-        <nav>
-            <a href="#Features">Features</a>
-            <a href="#Download">Download</a>
-
-            <button id="search-icon" class="search-toggle-button">🔍 Search</button>
-            <div id="searchDropdown" class="search-dropdownhidden">
+            
+            <div id="searchDropdown" class="search-dropdown hidden"> 
                 <input type="text" id="search-input" placeholder="Location, agent, distance....">
                 <div class="filters">
                     <select id="price-filter">
@@ -51,7 +40,17 @@
                     <button class="cta-button search-button">Find Listings</button>
                 </div>            
             </div>
-        </nav>
+            
+        </header>
+
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <h1>Your Perfect Off-Campus Accomodation Awaits</h1>
+                <p>Find vetted, secure, and affordable rental properties near or within your campus on iOS and Android.</p>
+                <button id="downloadBtn" class="cta-button">Download the App Now!</button> 
+            </div>
+        </section>
+        
         <section id="Features" class="features-section">
             <h2>Why Choose BNB Accomodations?</h2>
             <div class="features-cards">
@@ -61,11 +60,11 @@
                 </div>
                 <div class="card">
                     <h3>Real-Time Listings</h3>
-                    <p>Easily See new apartments and rooms the moment agents uploads. Never miss a deal.</p>
+                    <p>Easily See new apartments and rooms the moment agents upload. Never miss a deal.</p>
                 </div>
                 <div class="card">
                     <h3>Student Filters</h3>
-                    <p>Easily filter properties by room type, price range, and distanceto get to your school</p>
+                    <p>Easily filter properties by room type, price range, and distance to get to your school</p>
                 </div>
                 <div class="card">
                     <h3>Affordable Options</h3>
@@ -73,12 +72,7 @@
                 </div>
             </div>
         </section>    
-                <section id="Features" class="features-section">
-            <h2>Why Choose BNB Accomodations?</h2>
-            <div class="features-cards">
-                </div>
-        </section>    
-
+        
         <section id="testimonials" class="testimonials-section">
             <h2>What Students Are Saying</h2>
             <div class="testimonial-cards">
@@ -96,7 +90,7 @@
                 </div>
             </div>
         </section>
-        <section id="Download" class="download-section">
+        
         <section id="Download" class="download-section">
             <h2>Get The App Today!</h2>
             <p>Scan the QR code or click the links to download our app on your device.</p>
@@ -107,9 +101,9 @@
         </section>
         
         <footer>
-            <p>&copy; 2025 BNB Accomodations. All rights reserved.</p>
+            <p>&copy; 2025 BNB Accomodations. All rights reserved.</p> 
         </footer>
 
-        <script src="script.js"></script>
+        <script src="client.js"></script> 
     </body>
 </html>
