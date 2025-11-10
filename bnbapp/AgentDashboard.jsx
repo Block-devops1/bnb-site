@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native'; 
+import { useNavigation } from '@react-navigation/native'; // Necessary for navigation hooks
 
 /**
  * @function AgentDashboard
@@ -10,15 +10,35 @@ import { useNavigation } from '@react-navigation/native';
 const AgentDashboard = ({ user = { name: "Agent John Doe" } }) => {
     const navigation = useNavigation();
 
-    // Function to navigate to the "Add Property" screen (PropertyCreationScreen.js)
+    // 1. Hook to set the Header Button
+    useEffect(() => {
+        navigation.setOptions({
+            // Place the Profile icon in the top right of the navigation bar
+            headerRight: () => (
+                <TouchableOpacity 
+                    onPress={() => navigation.navigate('Profile')} // Navigates to ProfileScreen.js
+                    style={{ marginRight: 15 }}
+                >
+                    {/* Assuming a dark header background, using white icon */}
+                    <Ionicons name="settings-outline" size={24} color="#fff" /> 
+                </TouchableOpacity>
+            ),
+            // Optionally, set a title or style here (if not set in App.js)
+            headerTitle: 'Agent Hub',
+            headerTintColor: '#fff',
+            headerStyle: {
+                backgroundColor: '#2c3e50', // Ensure this matches your App.js theme
+            }
+        });
+    }, [navigation]); // Re-run this effect if the navigation object changes
+
+    // 2. Function to navigate to the "Add Property" screen
     const handleAddProperty = () => {
-        // 'PropertyCreation' is the name defined in App.js
         navigation.navigate('PropertyCreation'); 
     };
 
-    // Function to navigate to the "Manage Listings" screen (AgentListingsScreen.js)
+    // 3. Function to navigate to the "Manage Listings" screen
     const handleManageListings = () => {
-        // 'AgentListings' is the name defined in App.js
         navigation.navigate('AgentListings'); 
     };
 
@@ -68,7 +88,7 @@ const styles = StyleSheet.create({
     },
     header: {
         padding: 20,
-        backgroundColor: '#2c3e50', // Dark Header background
+        backgroundColor: '#2c3e50', // Dark Header background for contrast
         borderBottomLeftRadius: 15,
         borderBottomRightRadius: 15,
         marginBottom: 10,
@@ -83,7 +103,6 @@ const styles = StyleSheet.create({
         color: '#bdc3c7',
         marginTop: 5,
     },
-    // Primary CTA Button
     ctaButton: {
         flexDirection: 'row',
         backgroundColor: '#2ecc71', // Green for positive action
@@ -105,7 +124,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginLeft: 10,
     },
-    // Secondary CTA Button
     secondaryCtaButton: {
         flexDirection: 'row',
         backgroundColor: '#ffffff', // White background
@@ -124,7 +142,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginLeft: 10,
     },
-    // Summary Box
     listTitle: {
         fontSize: 18,
         fontWeight: 'bold',

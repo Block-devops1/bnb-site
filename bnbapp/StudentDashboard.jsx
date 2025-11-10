@@ -22,13 +22,30 @@ const StudentDashboard = () => {
     
     // State for Search and Filter values
     const [searchQuery, setSearchQuery] = useState('');
-    const [listings] = useState(MOCK_LISTINGS); // Original unchanging list
-    const [filteredListings, setFilteredListings] = useState(MOCK_LISTINGS); // List displayed to user
+    const [listings] = useState(MOCK_LISTINGS);
+    const [filteredListings, setFilteredListings] = useState(MOCK_LISTINGS);
     const [maxPrice, setMaxPrice] = useState('0'); 
     const [minBeds, setMinBeds] = useState('1'); 
     const [propertyTypeFilter, setPropertyTypeFilter] = useState('all');
 
-    // useEffect runs the filter whenever any of the filter states change
+    // 1. Hook to set the Header Button
+    useEffect(() => {
+        navigation.setOptions({
+            // Place the Profile icon in the top right of the navigation bar
+            headerRight: () => (
+                <TouchableOpacity 
+                    onPress={() => navigation.navigate('Profile')} // Navigates to ProfileScreen.js
+                    style={{ marginRight: 15 }}
+                >
+                    {/* Assuming a light header background, using blue icon */}
+                    <Ionicons name="person-circle-outline" size={26} color="#3498db" /> 
+                </TouchableOpacity>
+            ),
+            headerTitle: 'Find Accommodation',
+        });
+    }, [navigation]);
+
+    // 2. Filter Logic Hook (Runs whenever search/filters change)
     useEffect(() => {
         applyFilters();
     }, [searchQuery, maxPrice, minBeds, propertyTypeFilter, listings]); 
@@ -68,11 +85,11 @@ const StudentDashboard = () => {
     };
 
     const handleViewListing = (item) => {
-        // This connects to the Property Detail Screen (The next step!)
+        // Navigates to the detail screen, passing the property data
         navigation.navigate('PropertyDetail', { property: item });
     };
 
-    // Placeholder component for rendering individual property items
+    // Component for rendering individual property items
     const renderListingItem = ({ item }) => (
         <TouchableOpacity 
             style={styles.listingCard} 
@@ -90,7 +107,7 @@ const StudentDashboard = () => {
 
     return (
         <View style={styles.container}>
-            {/* 1. Search Bar Area */}
+            {/* Search Bar Area */}
             <View style={styles.searchBarContainer}>
                 <View style={styles.searchBox}>
                     <Ionicons name="search-outline" size={20} color="#7f8c8d" />
@@ -104,7 +121,7 @@ const StudentDashboard = () => {
                 </View>
             </View>
             
-            {/* 2. Filter Controls Row */}
+            {/* Filter Controls Row */}
             <View style={styles.filterRow}>
                 <View style={styles.pickerWrapper}>
                     <Text style={styles.filterLabel}>Max Price</Text>
@@ -145,7 +162,7 @@ const StudentDashboard = () => {
                 </View>
             </View>
 
-            {/* 3. Listings List */}
+            {/* Listings List */}
             <FlatList
                 data={filteredListings} 
                 renderItem={renderListingItem}
@@ -165,9 +182,8 @@ const StudentDashboard = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#ecf0f1', // Light gray background
+        backgroundColor: '#ecf0f1',
     },
-    // Search Bar Styling (Existing)
     searchBarContainer: {
         flexDirection: 'row',
         padding: 15,
@@ -196,7 +212,6 @@ const styles = StyleSheet.create({
         color: '#2c3e50',
         padding: 15,
     },
-    // Filter Row Styling (New)
     filterRow: {
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -226,7 +241,6 @@ const styles = StyleSheet.create({
         width: '100%',
         color: '#3498db',
     },
-    // Listing Card Styling (Existing)
     listContent: {
         paddingHorizontal: 15,
         paddingBottom: 20,
