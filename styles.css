@@ -369,3 +369,74 @@ footer {
         min-width: 90%;
     }
 }
+
+/* ---------------------------------- */
+/* 8. Contact Section Styling (NEW FEATURE) */
+/* ---------------------------------- */
+.contact-section {
+    padding: 80px 5%;
+    text-align: center;
+    background-color: #ffffff; /* White background for contrast */
+}
+
+.contact-section h2 {
+    color: #3498db; /* Blue accent */
+    margin-bottom: 10px;
+}
+
+.contact-form-container {
+    max-width: 600px;
+    margin: 40px auto 0;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #bdc3c7;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box; /* Crucial for padding/border not breaking width */
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+.form-submit-button {
+    width: 100%;
+    margin-top: 10px;
+    /* Inherits styling from .cta-button, ensuring consistent look */
+}
+
+.form-success-message {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: #2ecc7130; /* Light green background */
+    color: #27ae60;
+    font-weight: bold;
+}

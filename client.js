@@ -74,3 +74,41 @@ document.addEventListener('DOMContentLoaded',() => {
         });
     }
 });
+
+// ----------------------------------------------------------------
+    // 3. Contact Form Submission Logic (NEW FEATURE)
+    // ----------------------------------------------------------------
+    
+document.addEventListener('DOMContentLoaded', () => {
+    const contactForm = document.getElementById('contactForm');
+    const formMessage = document.getElementById('form-message');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Stop the form from reloading the page
+
+            // In a real application, you would send this data to a server/API here.
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+
+            // Log the form data for debugging
+            console.log('--- Contact Form Submission ---');
+            console.log(formData);
+            
+            // Show success message and reset form
+            formMessage.innerHTML = 'Thank you! Your message has been sent successfully.';
+            formMessage.style.display = 'block';
+            contactForm.reset(); 
+            
+            // Hide the message after a few seconds
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 5000);
+        });
+    }
+}); // End of DOMContentLoaded
