@@ -440,3 +440,74 @@ footer {
     color: #27ae60;
     font-weight: bold;
 }
+
+/* ---------------------------------- */
+/* 9. General Mobile Responsiveness */
+/* ---------------------------------- */
+@media (max-width: 600px) {
+    /* 1. Navbar & Header Adjustments */
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-bottom: 10px;
+    }
+
+    /* Stack navigation links vertically */
+    .navbar nav {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar nav a {
+        margin: 5px 0 5px 0; /* Vertical spacing */
+    }
+
+    /* 2. Hero Section */
+    .hero-section {
+        padding: 60px 5%; /* Less vertical padding on mobile */
+    }
+
+    .hero-content h1 {
+        font-size: 2em; /* Smaller, readable text */
+    }
+    
+    .hero-content p {
+        font-size: 1em;
+    }
+    
+    /* 3. Features Cards */
+    .feature-cards {
+        flex-direction: column; /* Stack cards on top of each other */
+        gap: 20px;
+    }
+
+    .card {
+        min-width: 100%; /* Make cards full width */
+    }
+
+    /* 4. Download & Footer */
+    .download-section {
+        padding: 50px 5%;
+    }
+
+    .download-links {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .download-links a {
+        width: 100%;
+        margin: 5px 0;
+    }
+    
+    /* 5. Contact Form (Tighter Padding) */
+    .contact-form-container {
+        padding: 20px;
+    }
+    
+    .form-group label {
+        font-size: 0.9em;
+    }
+}
