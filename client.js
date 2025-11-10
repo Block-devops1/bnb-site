@@ -80,35 +80,60 @@ document.addEventListener('DOMContentLoaded',() => {
     // ----------------------------------------------------------------
     
 document.addEventListener('DOMContentLoaded', () => {
+    // ----------------------------------------------------------------
+    // 3. Contact Form Submission Logic (UPDATED FOR FIREBASE)
+    // ----------------------------------------------------------------
+    
     const contactForm = document.getElementById('contactForm');
     const formMessage = document.getElementById('form-message');
 
     if (contactForm) {
-        contactForm.addEventListener('submit', (event) => {
+        contactForm.addEventListener('submit', async (event) => {
             event.preventDefault(); // Stop the form from reloading the page
-
-            // In a real application, you would send this data to a server/API here.
             
+            // Get form values
             const formData = {
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
                 subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value
+                message: document.getElementById('message').value,
+                timestamp: new Date() // Record the time of submission
             };
 
-            // Log the form data for debugging
-            console.log('--- Contact Form Submission ---');
-            console.log(formData);
-            
-            // Show success message and reset form
-            formMessage.innerHTML = 'Thank you! Your message has been sent successfully.';
-            formMessage.style.display = 'block';
-            contactForm.reset(); 
-            
-            // Hide the message after a few seconds
-            setTimeout(() => {
-                formMessage.style.display = 'none';
-            }, 5000);
+            // Disable button and show processing message
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+
+            try {
+                // 🛑 NEW: Add data to Firestore 'inquiries' collection
+                const docRef = await db.collection("inquiries").add(formData);
+
+                console.log("Document written with ID: ", docRef.id);
+                
+                // Success message
+                formMessage.innerHTML = 'Thank you! Your message has been sent successfully.';
+                formMessage.style.display = 'block';
+                contactForm.reset(); 
+
+            } catch (error) {
+                console.error("Error writing document: ", error);
+                // Error message
+                formMessage.innerHTML = 'Oops! Failed to send message. Please try again.';
+                formMessage.style.backgroundColor = '#e74c3c30';
+                formMessage.style.color = '#e74c3c';
+                formMessage.style.display = 'block';
+
+            } finally {
+                // Re-enable button and hide message after a delay
+                submitButton.disabled = false;
+                submitButton.textContent = 'Send Message';
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                    formMessage.style.backgroundColor = '#2ecc7130'; // Reset color
+                    formMessage.style.color = '#27ae60'; // Reset color
+                }, 5000);
+            }
         });
     }
-}); // End of DOMContentLoaded
+// }); // Ensure the closing tag for DOMContentLoaded is still present below this block
