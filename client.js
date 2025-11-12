@@ -136,4 +136,5 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-// }); // Ensure the closing tag for DOMContentLoaded is still present below this block
+}); // Close DOMContentLoaded
+// ...existing code...
